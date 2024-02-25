@@ -153,13 +153,18 @@ public class blood {
                 ResultSet resultSet = preparedStatement.executeQuery();
 
                 System.out.println("Donors with Blood Group " + searchBloodGroup + ":");
+                System.out.println("\n");
                 while (resultSet.next()) {
-                    System.out.println("Name: " + resultSet.getString("name") +
-                            ", Age: " + resultSet.getInt("age") +
-                            ", Gender: " + resultSet.getString("gender") +
-                            ", Weight: " + resultSet.getFloat("weight") +
-                            ", Phone Number: " + resultSet.getString("phonenumber") +
-                            ", Address: " + resultSet.getString("address"));
+                    System.out.println("Name: " + resultSet.getString("name") +"\n"+
+                    " Age: " + resultSet.getInt("age")+"\n"+ 
+                    " Gender: " + resultSet.getString("gender") +"\n"+
+                    " Weight: " + resultSet.getFloat("weight") +"\n"+
+                    " Phone Number: " + resultSet.getString("phonenumber") +"\n"+
+                    " Address: " + resultSet.getString("address"));
+        
+            // Print one-line gap for better separation between each line of donor information
+            System.out.println();
+            System.out.println("\n");
                 }
             }
         } catch (SQLException e) {

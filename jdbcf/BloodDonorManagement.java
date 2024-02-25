@@ -92,8 +92,12 @@ public class BloodDonorManagement {
             try (PreparedStatement preparedStatement = connection.prepareStatement(selectSQL)) {
                 preparedStatement.setString(1, searchBloodGroup);
                 ResultSet resultSet = preparedStatement.executeQuery();
+                System.out.println(" ");
+                System.out.println(" ");
+                System.out.println(" ");
 
                 System.out.println("Donors with Blood Group " + searchBloodGroup + ":");
+                
                 while (resultSet.next()) {
                     System.out.println("Name: " + resultSet.getString("name") +
                             ", Age: " + resultSet.getInt("age") +
