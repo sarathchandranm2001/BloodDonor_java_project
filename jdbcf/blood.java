@@ -57,7 +57,9 @@ public class blood {
 
     private static void registerDonor(Scanner scanner) {
         System.out.print("Enter donor name: ");
-        String name = scanner.next().toUpperCase();
+        // Consume the newline character left after the previous nextInt() call
+        scanner.nextLine();
+        String name = scanner.nextLine().toUpperCase();
 
         // Validate blood group
         String bloodGroup;
@@ -121,8 +123,12 @@ public class blood {
 
         System.out.print("Enter phone number: ");
         String phoneNumber = scanner.next();
+
+
         System.out.print("Enter address: ");
-        String address = scanner.next().toUpperCase();
+        scanner.nextLine();
+        String address = scanner.nextLine().toUpperCase();
+
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String insertSQL = "INSERT INTO donors (name, bloodgroup, gender, weight, phonenumber, address, age) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -160,7 +166,7 @@ public class blood {
                     " Gender: " + resultSet.getString("gender") +"\n"+
                     " Weight: " + resultSet.getFloat("weight") +"\n"+
                     " Phone Number: " + resultSet.getString("phonenumber") +"\n"+
-                    " Address: " + resultSet.getString("address"));
+                    ", Address: " + resultSet.getString("address"));
         
             // Print one-line gap for better separation between each line of donor information
             System.out.println();
